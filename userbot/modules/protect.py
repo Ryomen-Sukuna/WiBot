@@ -17,7 +17,7 @@ def progress(current, total):
             current, total, (current / total) * 100
         )
     )
-@register(outgoing=True, pattern=r"^\.p$")
+@register(outgoing=True, pattern=r"^\.x$")
 async def _(event):
     if event.fwd_from:
         return
