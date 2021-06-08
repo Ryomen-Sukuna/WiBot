@@ -6,16 +6,17 @@
 """ Userbot initialization. """
 
 import os
-
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
+from platform import python_version
+from time import sleep
 
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
 from dotenv import load_dotenv
 from requests import get
-from telethon import TelegramClient
+from telethon import TelegramClient, version
 from telethon.sessions import StringSession
 
 load_dotenv("config.env")
@@ -181,6 +182,40 @@ for binary, path in binaries.items():
     downloader.start()
     os.chmod(path, 0o755)
 
+
+def migration_workaround():
+    try:
+        from userbot.modules.sql_helper.globals import addgvar, delgvar, gvarstatus
+    except AttributeError:
+        return None
+
+    old_ip = gvarstatus("public_ip")
+    new_ip = get("https://api.ipify.org").text
+
+    if old_ip is None:
+        delgvar("public_ip")
+        addgvar("public_ip", new_ip)
+        return None
+
+    if old_ip == new_ip:
+        return None
+
+    sleep_time = 180
+    LOGS.info(
+        f"A change in IP address is detected, waiting for {sleep_time / 60} minutes before starting the bot."
+    )
+    sleep(sleep_time)
+    LOGS.info("Starting bot...")
+
+    delgvar("public_ip")
+    addgvar("public_ip", new_ip)
+    return None
+
+
+if HEROKU_APP_NAME is not None and HEROKU_API_KEY is not None:
+    migration_workaround()
+
+
 # 'bot' variable
 if STRING_SESSION:
     # pylint: disable=invalid-name
@@ -222,6 +257,33 @@ with bot:
             "BOTLOG_CHATID environment variable isn't a "
             "valid entity. Check your environment variables/config.env file.")
         quit(1)
+
+
+async def update_restart_msg(chat_id, msg_id):
+    DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
+    message = (
+        f"**WeebProject is back up and running!**\n\n"
+        f"**Telethon :** __{version.__version__}__\n"
+        f"**Python :** __{python_version()}__\n"
+        f"**User :** __{DEFAULTUSER}__"
+    )
+    await bot.edit_message(chat_id, msg_id, message)
+    return True
+
+try:
+    from userbot.modules.sql_helper.globals import delgvar, gvarstatus
+
+    chat_id, msg_id = gvarstatus("restartstatus").split("\n")
+    try:
+        with bot:
+            bot.loop.run_until_complete(
+                update_restart_msg(
+                    int(chat_id), int(msg_id)))
+    except BaseException:
+        pass
+    delgvar("restartstatus")
+except AttributeError:
+    pass
 
 # Global Variables
 COUNT_MSG = 0
