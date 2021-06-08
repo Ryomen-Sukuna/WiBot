@@ -74,7 +74,7 @@ async def _(event):
 CMD_HELP.update(
     {
         "protecc": "**Plugin : **`protecc`\
-    \n\n**Syntax : **`.p`\
+    \n\n**Syntax : **`.x`\
     \n**Function : **this plugin protecc waifu"
     }
 )
