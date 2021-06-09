@@ -83,7 +83,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
                 f"{txt}\n" "`Invalid Heroku credentials for deploying userbot dyno.`"
             )
             return repo.__del__()
-        await event.edit("`Userbot dyno build in progress, please wait...`")
+        await event.edit("`Userbot dyno build in progress, please wait 5-8 minutes...`")
         try:
             from userbot.modules.sql_helper.globals import addgvar, delgvar
 
@@ -202,7 +202,7 @@ async def upstream(event):
 
     if changelog == "" and force_update is False:
         await event.edit(
-            "\n`Your USERBOT is`  **up-to-date**  `with`  "
+            "\n`Your BotGabut is`  **up-to-date**  `with`  "
             f"**{UPSTREAM_REPO_BRANCH}**\n"
         )
         return repo.__del__()
@@ -231,7 +231,7 @@ CMD_HELP.update(
         "\nUsage: Update your userbot, "
         "if there are any updates in your userbot repository."
         "\n\n>`.update deploy`"
-        "\nUsage: Deploy your userbot"
+        "\nUsage: Deploy your userbot, Recomended use this"
         "\nThis will triggered deploy always, even no updates."
     }
 )
