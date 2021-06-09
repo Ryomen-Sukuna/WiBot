@@ -262,7 +262,7 @@ with bot:
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (
-        f"╔════════BotGabut is back up and running!═════════\n\n"
+        f"╔════════BotGabut is back up and running!═════════\n"
         f"║\n"
         f"║Telethon : {version.__version__}\n"
         f"║\n"
