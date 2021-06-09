@@ -75,7 +75,7 @@ HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
-    "https://github.com/BianSepang/WeebProject.git")
+    "https://github.com/Scroxr-X/BotGabut.git")
 # UPSTREAM_REPO_URL branch, the default is master
 UPSTREAM_REPO_BRANCH = os.environ.get(
     "UPSTREAM_REPO_BRANCH", "master")
@@ -92,7 +92,7 @@ OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
 # Default .alive name anf logo
 ALIVE_NAME = os.environ.get("ALIVE_NAME") or None
 ALIVE_LOGO = os.environ.get(
-    "ALIVE_LOGO") or "https://telegra.ph/file/9e888cb1e485adf3a179e.mp4"
+    "ALIVE_LOGO") or "https://telegra.ph/file/1e73a922dd2093aee4ab5.mp4"
 
 # remove.bg API key
 REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
@@ -262,7 +262,7 @@ with bot:
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (
-        f"**WeebProject is back up and running!**\n\n"
+        f"**BotGabut is back up and running!**\n\n"
         f"**Telethon :** __{version.__version__}__\n"
         f"**Python :** __{python_version()}__\n"
         f"**User :** __{DEFAULTUSER}__"
