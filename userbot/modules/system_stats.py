@@ -133,13 +133,13 @@ async def amireallyalive(alive):
     """For .alive command, check if the bot is running."""
     logo = ALIVE_LOGO
     output = (
-        f"╔════════ *🩸BotGabut* is running on `{repo.active_branch.name}`🩸═════════\n"
+        f"╔════════🩸**BotGabut** is running on **{repo.active_branch.name}**🩸═════════\n"
         f"║\n"
-        f"║*🧯Telethon* : {version.__version__}\n"
+        f"║🧯**Telethon** : {version.__version__}\n"
         f"║\n"
-        f"║*🐍 Python* : {python_version()}\n"
+        f"║🐍**Python**  : {python_version()}\n"
         f"║\n"
-        f"║*🤖 User* : {DEFAULTUSER}\n"
+        f"║🤖**User**    : {DEFAULTUSER}\n"
         f"║\n"
         f"╚════════════════════"
     )
