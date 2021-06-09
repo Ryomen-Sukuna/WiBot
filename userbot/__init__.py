@@ -262,15 +262,15 @@ with bot:
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (
-        f"*╔════════BotGabut is back up and running!═════════*\n\n"
-        f"*║*__\n"
-        f"*║Telethon :* __{version.__version__}__\n"
-        f"*║*__\n"
-        f"*║Python :* __{python_version()}__\n"
-        f"*║*__\n"
-        f"*║User :* __{DEFAULTUSER}__ __\n"
-        f"*║*__\n"
-        f"*╚════════════════════════════════════════════════*"
+        f"╔════════BotGabut is back up and running!═════════\n\n"
+        f"║__\n"
+        f"║Telethon : {version.__version__}__\n"
+        f"║__\n"
+        f"║Python : {python_version()}__\n"
+        f"║__\n"
+        f"║User : {DEFAULTUSER} __\n"
+        f"║__\n"
+        f"╚════════════════════"
     )
     await bot.edit_message(chat_id, msg_id, message)
     return True
