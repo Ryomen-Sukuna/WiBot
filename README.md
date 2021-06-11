@@ -19,7 +19,7 @@
     <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?label=telethon&logo=pypi&logoColor=white&style=flat-square" /></a>
 </p>
 
-
+[![BotGabut](https://telegra.ph/file/b056b34cfbf62a51a72bd.jpg)]
 
 ## Deploy to Heroku
 
@@ -34,6 +34,7 @@
 * [Alfianandaa](https://github.com/alfianandaa) - ProjectAlf
 * [GengKapak](https://github.com/GengKapak) - DCLXVI
 * [BianSepang](https://github.com/BianSepang) - WeebProject
+* and Others
 
 and [everyone](https://github.com/Scroxy-X/BotGabut/graphs/contributors) that makes this userbot awesome :D
 
