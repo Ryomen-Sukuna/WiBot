@@ -33,6 +33,7 @@
 * [Aidil Aryanto](https://github.com/aidilaryanto) - ProjectDils
 * [Alfianandaa](https://github.com/alfianandaa) - ProjectAlf
 * [GengKapak](https://github.com/GengKapak) - DCLXVI
+* [BianSepang](https://github.com/BianSepang) - WeebProject
 
 and [everyone](https://github.com/Scroxy-X/BotGabut/graphs/contributors) that makes this userbot awesome :D
 
