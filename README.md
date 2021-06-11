@@ -19,7 +19,8 @@
     <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?label=telethon&logo=pypi&logoColor=white&style=flat-square" /></a>
 </p>
 
-[BotGabut](https://telegra.ph/file/b056b34cfbf62a51a72bd.jpg)
+[![BotGabut](https://telegra.ph/file/b056b34cfbf62a51a72bd.jpg)](https://t.me/animechanelindo)
+
 
 ## Deploy to Heroku
 
