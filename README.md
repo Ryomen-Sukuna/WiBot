@@ -1,4 +1,14 @@
-# BotGabut Userbot
+# Telegram BotGabut Userbot
+
+
+### Connect with me:
+[<img align="left" alt="Ihsan | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />][instagram]
+[<img align="left" alt="Ihsan | Telegram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/telegram.svg" />][telegram]
+<br />
+
+
+[instagram]: https://instagram.com/ihsan_rxymx
+[telegram]: https://t.me/RxyMX
 
 <p align="center">
     <a href="https://app.codacy.com/gh/Scroxy-X/BotGabut/dashboard"> <img src="https://img.shields.io/codacy/grade/a723cb464d5a4d25be3152b5d71de82d?color=blue&logo=codacy&style=flat-square" alt="Codacy" /></a><br>
@@ -9,45 +19,13 @@
     <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?label=telethon&logo=pypi&logoColor=white&style=flat-square" /></a>
 </p>
 
-```
-#include <std/disclaimer.h>
-/*
-*    Your Telegram account may get banned.
-*    I am not responsible for any improper use of this bot
-*    This bot is intended for the purpose of having fun with memes,
-*    as well as efficiently managing groups.
-*    You ended up spamming groups, getting reported left and right,
-*    and you ended up in a Finale Battle with Telegram and at the end
-*    Telegram Team deleted your account?
-*    And after that, then you pointed your fingers at us
-*    for getting your acoount deleted?
-*    I will be rolling on the floor laughing at you.
-*/
-```
 
-A modular Telegram Userbot running on Python3 with sqlalchemy database. 
 
-Click generate string session and choose telethon [ProjectBishSession](http://string.projectdils.repl.run) Userbot
- 
-## Deploy
-### Heroku
-Click this button below to Deploy to Heroku
-<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/Scroxy-X/WeebProject/tree/master"> <img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy to Heroku"/></a></p>
+## Deploy to Heroku
 
-### "Bare hands", using Git and Python3 -- on (Linux, macOS, and Android [via Termux])
-1. Clone this repository on your local machine and `cd` (or `chdir`, anti bloat guy) to it
-2. Set up Python virtual environment named "venv" inside it (Requires `virtualenv` installed on the system)
-  - `virtualenv venv`
-  - Don't forget to activate the virtualenv: `. venv/bin/activate`
-3. Set up database for the userbot, search Google on how to set up a local database (PostgreSQL is recommended)
-4. Install the requirements: `pip3 install -r ./requirements.txt`
-5. Edit `sample_config.env` and save it as `config.env`
-  - Do not forget to fill in the `REQUIRED %%` values, or else the bot will not run
-6. Run the bot: `bash ./exec.sh`
-  - Protip: See what `bash ./exec.sh --help` tells you
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Scroxy-X/xluamusic)
 
-##### ※ Those steps are probably possible to pull off on Windows but it's pretty much unknown (different file tree paradigm, directory conventions, PowerShell instead of BASH or ZSH) -- If you're on Windows, you'd be better off running this on WSL (or WSL2)
----
+
 ## Credits
 * [Adek Maulana](https://github.com/adekmaulana) - ProjectBish
 * [Mr. Miss](https://github.com/keselekpermen69) - UserButt
