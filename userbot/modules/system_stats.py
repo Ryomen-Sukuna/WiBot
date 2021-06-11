@@ -142,7 +142,9 @@ async def amireallyalive(alive):
         f"║🤖**User**    : {DEFAULTUSER}\n"
         f"║\n"
         f"╚════════════════════"
-    )
+        f"▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰ \n"
+        f"[𝐈𝐍𝐒𝐓𝐀𝐆𝐑𝐀𝐌](https://www.instagram.com/ihsan_rxymx) || [𝐑𝐄𝐏𝐎](https://github.com/Scroxy-X/Botgabut)\n"
+        f"▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰")
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
