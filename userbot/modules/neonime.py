@@ -57,21 +57,21 @@ async def _neonime(event):
             await event.edit(out, parse_mode="html")
 
 
-@register(outgoing=True, pattern=r"^\.len ?(.*)")
+@register(outgoing=True, pattern=r"^\.nk ?(.*)")
 async def _neonime(event):
     await event.edit('tunggu bentar...')
-    url = 'https://lendrive.web.id/anime/?status=&type=&order=update'
+    url = 'https://nekonime.vip/'
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
-    bd_ = _bs.findAll('div', class_='listupd')
-    out = "<b>➲ Lendrive > Episode Terbaru:</b>\n═════════════════\n"
+    bd_ = _bs.findAll('div', class_='col-md-12')
+    out = "<b>➲ Nekonime > Episode Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
         if not _lucu:
             _lucu = 'none'
         else:  # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
             tt_ = _lucu.get_text()
-            _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+TV\s+Ongoing\s+Sub\s+Season.\d+', '', tt_)
+            _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
             link = _lucu['href']
             out += f"➣ <a href='{link}'>{_tt}</a>\n"
             if len(out) > 1000:
@@ -216,4 +216,6 @@ CMD_HELP.update({"neonime": "**Neonime**"
                  "\n >`.neo`"
                  "\n  Usage: Liat anime baru rilis di neonime."
                  "\n >`.nl` <`url episode`>"
-                 "\n  Usage: Cari link download, Copy url episode dari `.neonime` "})
+                 "\n  Usage: Cari link download, Copy url episode dari `.neonime` "
+                 "\n Lainnya : .ks | .nk | .sm
+})
