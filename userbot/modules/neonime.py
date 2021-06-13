@@ -60,10 +60,10 @@ async def _neonime(event):
 @register(outgoing=True, pattern=r"^\.len ?(.*)")
 async def _neonime(event):
     await event.edit('tunggu bentar...')
-    url = 'https://lendrive.web.id/'
+    url = 'https://lendrive.web.id/anime/?status=&type=&order=update'
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
-    bd_ = _bs.findAll('div', class_='releases latesthome')
+    bd_ = _bs.findAll('div', class_='listupd')
     out = "<b>➲ Lendrive > Episode Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
