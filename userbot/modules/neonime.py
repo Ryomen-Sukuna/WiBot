@@ -217,5 +217,5 @@ CMD_HELP.update({"neonime": "**Neonime**"
                  "\n  Usage: Liat anime baru rilis di neonime."
                  "\n >`.nl` <`url episode`>"
                  "\n  Usage: Cari link download, Copy url episode dari `.neonime` "
-                 "\n Lainnya : .ks | .nk | .sm
+                 "\n Lainnya : .ks | .nk | .sm"
 })
