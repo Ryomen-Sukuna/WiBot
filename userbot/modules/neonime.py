@@ -20,7 +20,29 @@ async def _neonime(event):
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
     bd_ = _bs.findAll('td', class_='bb')
-    out = "<b>➲ Episode Baru:</b>\n═════════════════\n"
+    out = "<b>➲ Episode Terbaru:</b>\n═════════════════\n"
+    for kntl_ in bd_:
+        _lucu = kntl_.find('a')
+        if not _lucu:
+            _lucu = 'none'
+        else:  # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
+            tt_ = _lucu.get_text()
+            _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
+            link = _lucu['href']
+            out += f"➣ <a href='{link}'>{_tt}</a>\n"
+            if len(out) > 1000:
+                break
+            await event.edit(out, parse_mode="html")
+
+
+@register(outgoing=True, pattern=r"^\.nm ?(.*)")
+async def _neonime(event):
+    await event.edit('tunggu bentar...')
+    url = 'https://neonime.site/movies/'
+    ht_ = requests.get(url).text
+    _bs = bs(ht_, "html.parser")
+    bd_ = _bs.findAll('div', class_='item_1 items')
+    out = "<b>➲ Movie Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
         if not _lucu:
@@ -144,28 +166,6 @@ async def _(event):
             server_url = server_link["link"]
             msg += f"➣ <a href='{server_url}'>{server_name}</a>\n"
         await event.edit(msg, parse_mode="html")
-
-
-@register(outgoing=True, pattern=r"^\.ns ?(.*)")
-async def _(event):
-        url = f"https://neonime.site/?s={search_query}"
-        ht_ = requests.get(url).text
-        _bs = bs(ht_, "html.parser")
-        bd_ = _bs.findAll('div', class_='item episode-home')
-
-        out = "<b>➲ Episode Baru:</b>\n═════════════════\n"
-    for kntl_ in bd_:
-        _lucu = kntl_.find('a')
-        if not _lucu:
-            _lucu = 'none'
-        else:  # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
-            tt_ = _lucu.get_text()
-            _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
-            link = _lucu['href']
-            out += f"➣ <a href='{link}'>{_tt}</a>\n"
-            if len(out) > 1000:
-                break
-            await event.edit(out, parse_mode="html")
 
 
 CMD_HELP.update({"neonime": "**Neonime**"
