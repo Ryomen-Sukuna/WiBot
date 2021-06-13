@@ -63,7 +63,7 @@ async def _neonime(event):
     url = 'https://lendrive.web.id/'
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
-    bd_ = _bs.findAll('div', class_='releases')
+    bd_ = _bs.findAll('div', class_='excstf')
     out = "<b>➲ Lendrive > Episode Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
