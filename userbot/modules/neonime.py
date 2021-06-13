@@ -60,7 +60,7 @@ async def _neonime(event):
 @register(outgoing=True, pattern=r"^\.act ?(.*)")
 async def _neonime(event):
     await event.edit('tunggu bentar...')
-    url = 'https://kusonime.com/'
+    url = 'https://kusonime.com/genres/action/'
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
     bd_ = _bs.findAll('div', class_='venz')
