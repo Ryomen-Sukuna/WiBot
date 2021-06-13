@@ -1,9 +1,9 @@
 """
-	Scrape neonime.vip
+	Scrape neonime.site
 	Feature
            Show new update anime
            Scrape link download
-	By : lel_remake_UserBoto
+	Update By : t.me/erruuu
 """
 
 import requests
@@ -16,7 +16,7 @@ from userbot.events import register
 @register(outgoing=True, pattern=r"^\.neo ?(.*)")
 async def _neonime(event):
     await event.edit('tunggu bentar...')
-    url = 'https://neonime.vip/episode/'
+    url = 'https://neonime.site/episode/'
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
     bd_ = _bs.findAll('td', class_='bb')
@@ -86,7 +86,7 @@ async def _(event):
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
-            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n\n"
+            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n"
 
         p = link_download(2, url)
         for label_name in p["label"]:
@@ -94,7 +94,7 @@ async def _(event):
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
-            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n\n"
+            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n"
 
         p = link_download(3, url)
         for label_name in p["label"]:
@@ -102,7 +102,7 @@ async def _(event):
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
-            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n\n"
+            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n"
 
         p = link_download(4, url)
         for label_name in p["label"]:
@@ -110,7 +110,39 @@ async def _(event):
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
-            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n\n"
+            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n"
+
+        p = link_download(5, url)
+        for label_name in p["label"]:
+            msg += f"<b>↛ {label_name} ↚</b>\n"
+        for server_link in p["url"]:
+            server_name = server_link["server"]
+            server_url = server_link["link"]
+            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n"
+
+        p = link_download(6, url)
+        for label_name in p["label"]:
+            msg += f"<b>↛ {label_name} ↚</b>\n"
+        for server_link in p["url"]:
+            server_name = server_link["server"]
+            server_url = server_link["link"]
+            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n"
+
+        p = link_download(7, url)
+        for label_name in p["label"]:
+            msg += f"<b>↛ {label_name} ↚</b>\n"
+        for server_link in p["url"]:
+            server_name = server_link["server"]
+            server_url = server_link["link"]
+            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n"
+
+        p = link_download(8, url)
+        for label_name in p["label"]:
+            msg += f"<b>↛ {label_name} ↚</b>\n"
+        for server_link in p["url"]:
+            server_name = server_link["server"]
+            server_url = server_link["link"]
+            msg += f"➣ <a href='{server_url}'>{server_name}</a>\n"
         await event.edit(msg, parse_mode="html")
 
 
