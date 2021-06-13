@@ -90,7 +90,7 @@ async def _(event):
 
         p = link_download(2, url)
         for label_name in p["label"]:
-            msg += f"<b>↛ {label_name} ↚</b>\n"
+            msg += f"\n<b>↛ {label_name} ↚</b>\n"
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
@@ -98,7 +98,7 @@ async def _(event):
 
         p = link_download(3, url)
         for label_name in p["label"]:
-            msg += f"<b>↛ {label_name} ↚</b>\n"
+            msg += f"\n<b>↛ {label_name} ↚</b>\n"
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
@@ -106,7 +106,7 @@ async def _(event):
 
         p = link_download(4, url)
         for label_name in p["label"]:
-            msg += f"<b>↛ {label_name} ↚</b>\n"
+            msg += f"\n<b>↛ {label_name} ↚</b>\n"
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
@@ -114,7 +114,7 @@ async def _(event):
 
         p = link_download(5, url)
         for label_name in p["label"]:
-            msg += f"<b>↛ {label_name} ↚</b>\n"
+            msg += f"\n<b>↛ {label_name} ↚</b>\n"
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
@@ -122,7 +122,7 @@ async def _(event):
 
         p = link_download(6, url)
         for label_name in p["label"]:
-            msg += f"<b>↛ {label_name} ↚</b>\n"
+            msg += f"\n<b>↛ {label_name} ↚</b>\n"
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
@@ -130,7 +130,7 @@ async def _(event):
 
         p = link_download(7, url)
         for label_name in p["label"]:
-            msg += f"<b>↛ {label_name} ↚</b>\n"
+            msg += f"\n<b>↛ {label_name} ↚</b>\n"
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
@@ -138,7 +138,7 @@ async def _(event):
 
         p = link_download(8, url)
         for label_name in p["label"]:
-            msg += f"<b>↛ {label_name} ↚</b>\n"
+            msg += f"\n<b>↛ {label_name} ↚</b>\n"
         for server_link in p["url"]:
             server_name = server_link["server"]
             server_url = server_link["link"]
