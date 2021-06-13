@@ -146,36 +146,26 @@ async def _(event):
         await event.edit(msg, parse_mode="html")
 
 
-def site_search(update, context, site: str):
-    message = update.effective_message
-    args = message.text.strip().split(" ", 1)
-    more_results = True
-
-    try:
-        search_query = args[1]
-    except IndexError:
-        message.reply_text("Give something to search")
-        return
-
 @register(outgoing=True, pattern=r"^\.ns ?(.*)")
 async def _(event):
-    elif site == "neo":
-        search_url = f"https://neonime.site/?s={search_query}"
-        html_text = requests.get(search_url).text
-        soup = bs4.BeautifulSoup(html_text, "html.parser")
-        search_result = soup.find_all("div", {"class": "item episode-home"})
+        url = f"https://neonime.site/?s={search_query}"
+        ht_ = requests.get(url).text
+        _bs = bs(ht_, "html.parser")
+        bd_ = _bs.findAll('div', class_='item episode-home')
 
-        result = f"<b>Hasil pencarian untuk</b> <code>{html.escape(search_query)}</code> <b>di</b> <code>Neonime</code>: \n"
-        for entry in search_result:
-
-            if not entry.text.strip():
-                result = f"<b>Tidak ditemukan hasil untuk</b> <code>{html.escape(search_query)}</code> <b>di</b> <code>Neonime</code>"
-                more_results = False
+        out = "<b>➲ Episode Baru:</b>\n═════════════════\n"
+    for kntl_ in bd_:
+        _lucu = kntl_.find('a')
+        if not _lucu:
+            _lucu = 'none'
+        else:  # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
+            tt_ = _lucu.get_text()
+            _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
+            link = _lucu['href']
+            out += f"➣ <a href='{link}'>{_tt}</a>\n"
+            if len(out) > 1000:
                 break
-
-            post_link = entry.a["href"]
-            post_name = entry.img["alt"]
-            result += f"× <a href='{post_link}'>{post_name}</a>\n"
+            await event.edit(out, parse_mode="html")
 
 
 CMD_HELP.update({"neonime": "**Neonime**"
