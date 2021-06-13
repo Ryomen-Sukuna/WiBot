@@ -41,7 +41,7 @@ async def _neonime(event):
     url = 'https://neonime.site/noticias/'
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
-    bd_ = _bs.findAll('div', class_='noticias')
+    bd_ = _bs.findAll('span', class_='title')
     out = "<b>➲ Movie Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
