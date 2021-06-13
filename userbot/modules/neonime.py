@@ -61,15 +61,16 @@ async def _neonime(event):
 async def _neonime(event):
     await event.edit('tunggu bentar...')
     url = 'https://otakudesu.moe/'
-    ht_ = requests.get(url).text
+api_url = 'https://anime.kaedenoki.net/api/'
+    ht_ = requests.get(api_url).text
     _bs = bs(ht_, "html.parser")
-    bd_ = _bs.findAll('h2', class_='jdlflm')
+    json_text = json.loads(requests_text)
     out = "<b>➲ Otakudesu > Episode Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
         if not _lucu:
             _lucu = 'none'
-        else:  # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
+        else:
             tt_ = _lucu.get_text()
             _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
             link = _lucu['href']
