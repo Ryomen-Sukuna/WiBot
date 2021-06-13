@@ -63,7 +63,7 @@ async def _neonime(event):
     url = 'https://oploverz.bz/'
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
-    bd_ = _bs.findAll('div', class_='dtl')
+    bd_ = _bs.findAll('div', class_='bsx')
     out = "<b>➲ Episode Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
@@ -93,7 +93,7 @@ async def _neonime(event):
             _lucu = 'none'
         else:  # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
             tt_ = _lucu.get_text()
-            _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
+            _tt = re.sub(r'\s+TV\s+Ongoing\s+Season.\d+', '', tt_)
             link = _lucu['href']
             out += f"➣ <a href='{link}'>{_tt}</a>\n"
             if len(out) > 1000:
