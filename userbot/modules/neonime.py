@@ -20,7 +20,7 @@ async def _neonime(event):
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
     bd_ = _bs.findAll('td', class_='bb')
-    out = "<b>➲ Episode Terbaru:</b>\n═════════════════\n"
+    out = "<b>➲ Neonime > Episode Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
         if not _lucu:
@@ -42,7 +42,7 @@ async def _neonime(event):
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
     bd_ = _bs.findAll('h2', class_='episodeye')
-    out = "<b>➲ Batch Terbaru:</b>\n═════════════════\n"
+    out = "<b>➲ Kusonime > Batch Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
         if not _lucu:
@@ -57,14 +57,14 @@ async def _neonime(event):
             await event.edit(out, parse_mode="html")
 
 
-@register(outgoing=True, pattern=r"^\.op ?(.*)")
+@register(outgoing=True, pattern=r"^\.ot ?(.*)")
 async def _neonime(event):
     await event.edit('tunggu bentar...')
-    url = 'https://oploverz.bz/'
+    url = 'https://otakudesu.moe/'
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
-    bd_ = _bs.findAll('div', class_='bsx')
-    out = "<b>➲ Episode Terbaru:</b>\n═════════════════\n"
+    bd_ = _bs.findAll('div', class_='newnime')
+    out = "<b>➲ Otakudesu > Episode Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
         if not _lucu:
@@ -73,7 +73,7 @@ async def _neonime(event):
             tt_ = _lucu.get_text()
             _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
             link = _lucu['href']
-            out += f"➣ <a href='{link}'>{tt_}</a>\n"
+            out += f"➣ <a href='{link}'>{_tt}</a>\n"
             if len(out) > 1000:
                 break
             await event.edit(out, parse_mode="html")
@@ -86,7 +86,7 @@ async def _neonime(event):
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
     bd_ = _bs.findAll('div', class_='animposx')
-    out = "<b>➲ Episode Terbaru:</b>\n═════════════════\n"
+    out = "<b>➲ Samehadaku > Episode Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
         if not _lucu:
