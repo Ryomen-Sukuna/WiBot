@@ -89,7 +89,7 @@ async def _(event):
     native = data['title']['native']
     episodes = data.get('episodes')
     coverImg = data.get('coverImage')['extraLarge']
-    caption += f"**═════════════════**"
+    caption += f"**═════════════════\n**"
     caption += f"**➣ Judul**: **{romaji}**(`{native}`)"
     caption += f"\n**➣ ID**: `{mid}`"
     if data['nextAiringEpisode']:
@@ -105,8 +105,8 @@ async def _(event):
             reply_to=event,
         )
     else:
-        caption += f"\n**Episode**: `{episodes}`"
-        caption += f"\n**Status**: `N/A`"
+        caption += f"\n**➣ Episode**: `{episodes}`"
+        caption += f"\n**➣ Status**: `N/A`"
         await event.delete()
         await event.client.send_file(
             event.chat_id,
