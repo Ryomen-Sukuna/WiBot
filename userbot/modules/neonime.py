@@ -106,7 +106,7 @@ async def _neonime(event):
     await event.edit('tunggu bentar...')
     url = 'https://combot.org/telegram/stickers?q='
     ht_ = requests.get(url).text
-    _bs = bs(ht_, "html.parser")
+    _bs = bs(ht_, "lxml")
     bd_ = _bs.findAll('div', class_='sticker-pack__title')
     out = "<b>➲ Stickers > Pack Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
