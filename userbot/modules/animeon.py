@@ -18,10 +18,10 @@ def time_(milliseconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = ((str(days) + " Days, ") if days else "") + \
-        ((str(hours) + " Hours, ") if hours else "") + \
-        ((str(minutes) + " Minutes, ") if minutes else "") + \
-        ((str(seconds) + " Seconds, ") if seconds else "") + \
+    tmp = ((str(days) + " Hari, ") if days else "") + \
+        ((str(hours) + " Jam, ") if hours else "") + \
+        ((str(minutes) + " Menit, ") if minutes else "") + \
+        ((str(seconds) + " Detik, ") if seconds else "") + \
         ((str(milliseconds) + " ms, ") if milliseconds else "")
     return tmp[:-2]
 # Don't do anything
@@ -89,13 +89,14 @@ async def _(event):
     native = data['title']['native']
     episodes = data.get('episodes')
     coverImg = data.get('coverImage')['extraLarge']
-    caption += f"**Name**: **{romaji}**(`{native}`)"
-    caption += f"\n**ID**: `{mid}`"
+    caption += f"**═════════════════**"
+    caption += f"**➣ Judul**: **{romaji}**(`{native}`)"
+    caption += f"\n**➣ ID**: `{mid}`"
     if data['nextAiringEpisode']:
         time = data['nextAiringEpisode']['timeUntilAiring'] * 1000
         time = time_(time)
-        caption += f"\n**Episode**: `{data['nextAiringEpisode']['episode']}`"
-        caption += f"\n**Airing in**: `{time}`"
+        caption += f"\n**➣ Episode**: `{data['nextAiringEpisode']['episode']}`"
+        caption += f"\n**➣ Rilis pada**: `{time}`"
         await event.delete()
         await event.client.send_file(
             event.chat_id,
@@ -133,7 +134,7 @@ async def _(event):
             "jumat",
             "sabtu",
             "minggu"]
-        msg = "Jadwal Rilis Hari: "
+        msg = "➲ Jadwal Rilis Hari: "
         if post == tbl_hari[0]:
             m_query = 0
         if post == tbl_hari[1]:
@@ -151,10 +152,10 @@ async def _(event):
         json_day = jsn["scheduleList"]
         json_days = json_day[m_query]["day"]
         json_titl = json_day[m_query]["animeList"]
-        msg += f"**{json_days}**\n"
+        msg += f"**{json_days}**\n═════════════════\n"
         for json_tt in json_titl:
             json_title = json_tt["anime_name"]
-            msg += f" ~ `{json_title}`\n"
+            msg += f" ➣ `{json_title}`\n"
         msg += f"\n**Note**: `Jadwal bisa berubah sewaktu-waktu`"
         await event.edit(msg)
 
