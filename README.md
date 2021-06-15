@@ -1,4 +1,4 @@
-# Telegram BotGabut Userbot | <a href="https://t.me/erruuu">@erruuu</a>
+# Telegram WiBot Userbot | <a href="https://t.me/erruuu">@erruuu</a>
 
 ### Join my Group:
 <p align="center"><b><a href="https://t.me/grup_anime_indo">Anime Lovers Indo</a></b></p>
@@ -12,12 +12,12 @@
     <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?label=telethon&logo=pypi&logoColor=white&style=flat-square" /></a>
 </p>
 
-[![BotGabut](https://telegra.ph/file/b056b34cfbf62a51a72bd.jpg)](https://t.me/animechanelindo)
+[![BotGabut](https://telegra.ph/file/dd8a0259b533ab4accf1d.jpg)](https://t.me/erruuu)
 
 
 ## Deploy to Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/EruBot/BotGabut)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/EruBot/WiBot)
 
 
 ## Credits
