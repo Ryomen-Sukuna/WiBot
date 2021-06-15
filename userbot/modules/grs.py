@@ -157,7 +157,7 @@ async def ParseSauce(googleurl):
 
 CMD_HELP.update(
     {
-        "GRS": ">`.grs [counter] <optional>`"
+        "grs": ">`.grs [counter] <optional>`"
         "\nUsage: Reply to a pic/sticker to reverse-search it on Google Images."
         "\nNumber of results can be specified, default is 3."
         "\nIf counter is 0, only info and links will be provided."
