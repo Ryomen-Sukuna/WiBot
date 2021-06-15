@@ -128,22 +128,22 @@ async def pipcheck(pip):
             await pip.edit("`Use .help pip to see an example`")
 
 
-@register(outgoing=True, pattern=r"^\.(alive|on)$")
+@register(outgoing=True, pattern=r"^\.(alive|on|me)$")
 async def amireallyalive(alive):
     """For .alive command, check if the bot is running."""
     logo = ALIVE_LOGO
     output = (
-        f"╔════════🩸**BotGabut** is running on **{repo.active_branch.name}**🩸═════════\n"
+        f"╔══➲**WiBot** is running on **{repo.active_branch.name}**══\n"
         f"║\n"
-        f"║🧯**Telethon** : {version.__version__}\n"
+        f"║**➣ Telethon** : {version.__version__}\n"
         f"║\n"
-        f"║🐍**Python**  : {python_version()}\n"
+        f"║**➣ Python**   : {python_version()}\n"
         f"║\n"
-        f"║🤖**User**    : {DEFAULTUSER}\n"
+        f"║**➣ User**     : {DEFAULTUSER}\n"
         f"║\n"
-        f"╚══════════════════════════════════════════"
-        f"[𝐈𝐍𝐒𝐓𝐀𝐆𝐑𝐀𝐌](https://www.instagram.com/ihsan_rxymx) || [𝐑𝐄𝐏𝐎](https://github.com/Scroxy-X/Botgabut) || [𝐆𝐑𝐎𝐔𝐏](t.me/zonaGreenland)\n"
-        f"═══════════════════════════════════════════")
+        f"╚════\n"
+        f"➣ [REPO](https://github.com/EruBot/WiBot)\n➣ [GROUP](t.me/grup_anime_indo)\n"
+        )
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
