@@ -120,7 +120,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     return
 
 
-async def upd(event, repo, ups_rem, ac_br):
+async def update(event, repo, ups_rem, ac_br):
     try:
         ups_rem.pull(ac_br)
     except GitCommandError:
@@ -142,13 +142,13 @@ async def upd(event, repo, ups_rem, ac_br):
     execle(sys.executable, *args, environ)
 
 
-@register(outgoing=True, pattern=r"^\.upd( n| d|$)")
+@register(outgoing=True, pattern=r"^\.update( now| deploy|$)")
 async def upstream(event):
-    "For .upd command, check if the bot is up to date, upd if specified"
+    "For .update command, check if the bot is up to date, update if specified"
     await event.edit("`Getting information....`")
     conf = event.pattern_match.group(1).strip()
     off_repo = UPSTREAM_REPO_URL
-    force_upd = False
+    force_update = False
     try:
         txt = "`Oops.. Updater cannot continue due to "
         txt += "some problems occured`\n\n**LOGTRACE:**\n"
@@ -165,12 +165,12 @@ async def upstream(event):
                 f"`Unfortunately, the directory {error} "
                 "does not seem to be a git repository.\n"
                 "But we can fix that by force updating the userbot using "
-                ".upd now.`"
+                ".update now.`"
             )
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        force_upd = True
+        force_update = True
         repo.create_head("master", origin.refs.master)
         repo.heads.master.set_tracking_branch(origin.refs.master)
         repo.heads.master.checkout(True)
@@ -200,37 +200,37 @@ async def upstream(event):
         await deploy(event, repo, ups_rem, ac_br, txt)
         return
 
-    if changelog == "" and force_upd is False:
+    if changelog == "" and force_update is False:
         await event.edit(
-            "\n`Your BotGabut is`  **up-to-date**  `with`  "
+            "\n`Your WiBot is`  **up-to-date**  `with`  "
             f"**{UPSTREAM_REPO_BRANCH}**\n"
         )
         return repo.__del__()
 
-    if conf == "" and force_upd is False:
+    if conf == "" and force_update is False:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
-        return await event.respond('`do ".upd now or .upd deploy" to upd.`')
+        return await event.respond('`do ".update now or .update deploy" to update.`')
 
-    if force_upd:
+    if force_update:
         await event.edit(
             "`Force-Syncing to latest stable userbot code, please wait...`"
         )
     if conf == "now":
         await event.edit("`Updating userbot, please wait....`")
-        await upd(event, repo, ups_rem, ac_br)
+        await update(event, repo, ups_rem, ac_br)
     return
 
 
-CMD_HELP.upd(
+CMD_HELP.update(
     {
-        "upd": ">`.upd`"
+        "update": ">`.update`"
         "\nUsage: Checks if the main userbot repository has any updates "
         "and shows a changelog if so."
-        "\n\n>`.upd n`"
+        "\n\n>`.update now`"
         "\nUsage: Update your userbot, "
         "if there are any updates in your userbot repository."
-        "\n\n>`.upd d`"
+        "\n\n>`.update deploy`"
         "\nUsage: Deploy your userbot, Recomended use this"
         "\nThis will triggered deploy always, even no updates."
     }
