@@ -120,7 +120,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
     return
 
 
-async def update(event, repo, ups_rem, ac_br):
+async def upd(event, repo, ups_rem, ac_br):
     try:
         ups_rem.pull(ac_br)
     except GitCommandError:
