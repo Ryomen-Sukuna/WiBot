@@ -33,6 +33,6 @@ async def help(event):
               \n{head2}\
               \n{sep2}\
               \n{head3}\
-              \n\n{string}\
+              \n\n[ {string}\
               \n{sep1}"
         )
