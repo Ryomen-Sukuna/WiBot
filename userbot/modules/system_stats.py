@@ -135,13 +135,13 @@ async def amireallyalive(alive):
     output = (
         f"**➲ WiBot** is running on **{repo.active_branch.name}**\n"
         f"════════════════════\n"
-        f"║**➣ Telethon** : {version.__version__}\n"
+        f"**➣ Telethon** {version.__version__}\n"
         
-        f"║**➣ Python**   : {python_version()}\n"
+        f"**➣ Python** {python_version()}\n"
         
-        f"║**➣ User**        : {DEFAULTUSER}\n"
+        f"**➣ User** {DEFAULTUSER}\n"
         
-        f"║➤ [REPO](https://github.com/EruBot/WiBot)\n║➤ [GROUP](t.me/grup_anime_indo)\n"
+        f"**➤ Repo https://github.com/EruBot/WiBot\n║➤ Group t.me/grup_anime_indo\n"
         )
     if ALIVE_LOGO:
         try:
