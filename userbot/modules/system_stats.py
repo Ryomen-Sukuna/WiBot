@@ -139,9 +139,11 @@ async def amireallyalive(alive):
         
         f"**➣ Python** {python_version()}\n"
         
-        f"**➣ User** {DEFAULTUSER}\n"
+        f"**➤ User** {DEFAULTUSER}\n"
         
-        f"**➤ Repo** https://github.com/EruBot/WiBot\n➤ **Group** t.me/grup_anime_indo\n"
+        f"**➤ Grup** t.me/grup_anime_indo\n"
+
+        f"**➤ Repo** https://github.com/EruBot/WiBot\n"
         )
     if ALIVE_LOGO:
         try:
