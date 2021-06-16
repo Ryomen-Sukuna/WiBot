@@ -141,7 +141,7 @@ async def amireallyalive(alive):
         
         f"**➣ User** {DEFAULTUSER}\n"
         
-        f"**➤ Repo https://github.com/EruBot/WiBot\n║➤ Group t.me/grup_anime_indo\n"
+        f"**➤ Repo** https://github.com/EruBot/WiBot\n➤ **Group** t.me/grup_anime_indo\n"
         )
     if ALIVE_LOGO:
         try:
