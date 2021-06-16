@@ -114,26 +114,11 @@ async def typewriter(typew):
     await typew.edit("`Tobat sadar lu anak haram`")
 
 
-@register(outgoing=True, pattern='^.gbt(?: |$)(.*)')
+@register(outgoing=True, pattern='^.w(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
-    sleep(1)
-    await typew.edit(f"**Nyanyi dikit bolehlah ya:v**")
-    sleep(2)
-    await typew.edit("`Du🤸‍♂️`")
-    sleep(2)
-    await typew.edit("`Du du 🤸‍♂️`")
-    sleep(0.5)
-    await typew.edit("`Du du du🤸‍♂️`")
-    await typew.edit("`Du🤸‍♂️`")
-    sleep(2)
-    await typew.edit("`Du du 🤸‍♂️`")
-    sleep(0.5)
-    await typew.edit("`Du du du🤸‍♂️`")
-    sleep(0.5)
-    await typew.edit("`Aye aye kimochi:v`")
-    sleep(2)
-    await typew.edit("`Asw Gabut bet gw:v`")
+    sleep(0.1)
+    await typew.edit("Wa'alaikumsalam")
 
 
 CMD_HELP.update({
@@ -150,6 +135,6 @@ CMD_HELP.update({
 \nUsage: Buat ngatain orang yg sllu pc.\
 \n\n`.tbat`\
 \nUsage: Tobat woi tobat.\
-\n\n`.gbt`\
-\nUsage: Buat lu pada yang gabut."
+\n\n`.w`\
+\nUsage: Jawab salam."
 })
