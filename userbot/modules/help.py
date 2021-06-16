@@ -19,7 +19,7 @@ async def help(event):
         else:
             await event.edit("**Harap tentukan nama modul yang valid.**")
     else:
-        head = "This list all modules of **WiBot**"
+        head = "{len(CMD_HELP)} modules of **WiBot**"
         head2 = f"🧰**Loaded Modules** : {len(CMD_HELP)}"
         head3 = "⛓**Usage** : `.help` `<module name>`"
         head4 = "**List for all available command below**: "
@@ -28,10 +28,10 @@ async def help(event):
         sep2 = "`═════════════════════════`"
         for i in sorted(CMD_HELP):
             string += "`" + str(i)
-            string += "`  \n  "
+            string += "`  ✦  "
         await event.edit(
             f"{head}\
-              \n{head2}\
+              
               \n{head3}\
               \n{sep2}\
               \n{head4}\
