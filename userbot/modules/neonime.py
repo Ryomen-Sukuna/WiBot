@@ -118,7 +118,7 @@ async def _neonime(event):
             _tt = re.sub(r'\s+TT\s+TTT\s+TTTT.\d+', '', tt_)
             link = _lucu['href']
             out += f"➣ <a href='https://owibu.com{link}'>{tt_}</a>\n"
-            if len(out) != 0:
+            if len(out) > 0:
                 break
             await event.edit(out, parse_mode="html")
 
