@@ -107,8 +107,8 @@ async def _neonime(event):
     url = 'https://owibu.com/'
     ht_ = requests.get(url).text
     _bs = bs(ht_, "html.parser")
-    bd_ = _bs.findAll('div', class_='parent-more')
-    out = "<b>➲ Samehadaku > Info Terbaru:</b>\n═════════════════\n"
+    bd_ = _bs.findAll('div', class_='more-content index')
+    out = "<b>➲ Owibu > Info Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
         _lucu = kntl_.find('a')
         if not _lucu:
@@ -117,7 +117,7 @@ async def _neonime(event):
             tt_ = _lucu.get_text()
             _tt = re.sub(r'\s+TT\s+TTT\s+TTTT.\d+', '', tt_)
             link = _lucu['href']
-            out += f"➣ <a href='https://owibu.com/{link}'>{_tt}</a>\n"
+            out += f"➣ <a href='https://owibu.com{link}'>{_tt}</a>\n"
             if len(out) > 1000:
                 break
             await event.edit(out, parse_mode="html")
