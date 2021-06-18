@@ -119,7 +119,7 @@ async def _neonime(event):
             link = _lucu['href']
             out += f"➣ <a href='https://owibu.com{link}'>{tt_}</a>\n"
             if len(out) > 1000:
-                break
+                continue
             await event.edit(out, parse_mode="html")
 
 
