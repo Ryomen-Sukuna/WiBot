@@ -110,13 +110,13 @@ async def _neonime(event):
     bd_ = _bs.findAll('div', class_='section-content clearfix')
     out = "<b>➲ Jurnal Otaku > Info Terbaru:</b>\n═════════════════\n"
     for kntl_ in bd_:
-        _lucu = kntl_.find('alt')
+        _lucu = kntl_.find('img')
         if not _lucu:
             _lucu = 'none'
         else:  # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
             tt_ = _lucu.get_text()
             _tt = re.sub(r'\s+http://jurnalotaku.com/\s+/\s+-.\d+', '', tt_)
-            link = _lucu['href']
+            link = _lucu['alt']
             out += f"➣ <b>{link}</b>\n"
             if len(out) > 1000:
                 break
