@@ -90,7 +90,7 @@ async def kang(args):
     if photo:
         splat = args.text.split()
         if not emojibypass:
-            emoji = "🤔"
+            emoji = "🇮🇩"
         pack = 1
         if len(splat) == 3:
             pack = splat[2]  # User sent both
@@ -106,7 +106,7 @@ async def kang(args):
                 emoji = splat[1]
 
         packname = f"a{user.id}_by_{user.username}_{pack}"
-        packnick = f"@{user.username}'s kang pack Vol.{pack}"
+        packnick = f"@{user.username} Pack Vol. {pack}"
         cmd = "/newpack"
         file = io.BytesIO()
 
@@ -138,7 +138,7 @@ async def kang(args):
                 while "120" in x.text:
                     pack += 1
                     packname = f"a{user.id}_by_{user.username}_{pack}"
-                    packnick = f"@{user.username}'s kang pack Vol.{pack}"
+                    packnick = f"@{user.username} Pack Vol. {pack}"
                     await args.edit(
                         "`Switching to Pack "
                         + str(pack)
