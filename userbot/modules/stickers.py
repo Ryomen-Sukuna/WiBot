@@ -42,7 +42,7 @@ KANGING_STR = [
 ]
 
 
-@register(outgoing=True, pattern=r"^\.curry")
+@register(outgoing=True, pattern=r"^\.k")
 async def kang(args):
     """For .kang command, kangs stickers or creates new ones."""
     user = await bot.get_me()
@@ -358,8 +358,8 @@ async def sticker_to_png(sticker):
 
 CMD_HELP.update(
     {
-        "stickers": ">`.curry [emoji('s)]?`"
-        "\nUsage: Reply .kang to a sticker or an image to kang it to your userbot pack "
+        "stickers": ">`.k [emoji('s)]?`"
+        "\nUsage: Reply .k to a sticker or an image to kang it to your userbot pack "
         "\nor specify the emoji you want to."
         "\n\n>`.curry (emoji['s]]?` [number]?"
         "\nUsage: Kang's the sticker/image to the specified pack but uses 🤔 as emoji "
