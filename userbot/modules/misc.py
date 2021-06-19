@@ -108,7 +108,7 @@ async def repeat(rep):
 async def repo_is_here(wannasee):
     """For .repo command, just returns the repo URL."""
     await wannasee.edit(
-        "**╭✠╼━━━━━━❖━━━━━━━✠╮** \n┣•REPO         : [BOTGABUT](https://github.com/Scroxy-X/BotGabut)\n**╰✠╼━━━━━━❖━━━━━━━✠╯**"
+        "**╭✠╼━━━━━━❖━━━━━━━✠╮** \n┣•REPO         : [WiBot](https://github.com/EruBot/WiBot)\n**╰✠╼━━━━━━❖━━━━━━━✠╯**"
     )
 
 @register(outgoing=True, pattern=r"^\.raw$")
