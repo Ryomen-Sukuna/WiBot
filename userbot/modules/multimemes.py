@@ -658,7 +658,7 @@ async def lastname(steal):
     message = await steal.get_reply_message()
     chat = "@GTransLoaderbot"
     user_id = message.sender.id
-    id = f"https://www87.zippyshare.com/v/1U0fFTBc/file.html"
+    id = f"{reply_message}"
     if message.sender.bot:
         await steal.edit("`Reply to actual users message.`")
         return
@@ -672,21 +672,14 @@ async def lastname(steal):
             except YouBlockedUserError:
                 await steal.reply("`Please unblock @GTransLoaderbot and try again`")
                 return
-            if r.text.startswith("https"):
+            if r.text.endswith("@Bhadoo"):
                 respond = await conv.get_response()
                 await steal.edit(f"`{r.message}`")
                 await steal.client.delete_messages(
                     conv.chat_id, [msg.id, r.id, response.id, respond.id]
                 )
                 return
-            if response.text.startswith("Downloading") or r.text.startswith(
-                "Downloading"
-            ):
-                await steal.edit("```Sedang Mengunduh...```")
-                await steal.client.delete_messages(
-                    conv.chat_id, [msg.id, r.id, response.id]
-                )
-                return
+            
             else:
                 respond = await conv.get_response()
                 await steal.edit(f"`{response.message}`")
