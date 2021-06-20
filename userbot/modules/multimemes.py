@@ -646,6 +646,43 @@ async def quotess(qotli):
         await qotli.client.delete_messages(conv.chat_id, [msg.id])
 
 
+@register(outgoing=True, pattern=r"^\.tl(?: |$)(.*)")
+async def lastname(steal):
+    if steal.fwd_from:
+        return
+    if not steal.reply_to_msg_id:
+        await steal.edit("`Reply to any user message.`")
+        return
+    reply_message = await steal.get_reply_message()
+    message = await steal.get_reply_message()
+    chat = "@prinzeugen_robot"
+    user_id = message.sender.id
+    id = f"{reply_message.text}"
+    if message.sender.bot:
+        await steal.edit("`Reply to actual users message.`")
+        return
+    await steal.edit("`Transloading...`")
+    try:
+        async with bot.conversation(chat) as conv:
+            try:
+                msg = await conv.send_message(id)
+                r = await conv.get_response()
+                response = await conv.get_response()
+            except YouBlockedUserError:
+                await steal.reply("`Please unblock @GTransLoaderbot and try again`")
+
+                return
+            if respond.text.startswith("Give"):
+                await steal.edit(f"{respond.message}")
+
+                return
+            else:
+                respond = await conv.get_response()
+                await steal.edit(f"{respond.message}")
+            
+    except TimeoutError:
+        return await steal.edit("`Error: `@GTransLoaderbot` is not responding!.`")
+
 
 @register(outgoing=True, pattern=r"^\.tes(?: |$)(.*)")
 async def lastname(steal):
@@ -655,7 +692,8 @@ async def lastname(steal):
         await steal.edit("`Reply to any user message.`")
         return
     reply_message = await steal.get_reply_message()
-    chat = "@gtransloaderbot"
+    message = await steal.get_reply_message()
+    chat = "@prinzeugen_robot"
     user_id = message.sender.id
     id = f"{reply_message.text}"
     if message.sender.bot:
@@ -671,7 +709,7 @@ async def lastname(steal):
             except YouBlockedUserError:
                 await steal.reply("`Please unblock @sangmatainfo_bot and try again`")
                 return
-            if r.text.startswith("https://"):
+            if r.text.startswith("Give"):
                 respond = await conv.get_response()
                 await steal.edit(f"`{r.message}`")
                 await steal.client.delete_messages(
