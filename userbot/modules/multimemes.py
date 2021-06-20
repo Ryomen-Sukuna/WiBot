@@ -672,9 +672,16 @@ async def lastname(steal):
             except YouBlockedUserError:
                 await steal.reply("`Please unblock @GTransLoaderbot and try again`")
                 return
-            if r.text.endswith("@Bhadoo"):
+            if r.text.endwith("@Bhadoo"):
                 respond = await conv.get_response()
-                await steal.edit(f"`{r.message}`")
+                await steal.edit(f"{r.message}")
+                await steal.client.delete_messages(
+                    conv.chat_id, [msg.id, r.id, response.id, respond.id]
+                )
+                return
+            if response.text.endwith("@Bhadoo"):
+                respond = await conv.get_response()
+                await steal.edit(f"{r.message}")
                 await steal.client.delete_messages(
                     conv.chat_id, [msg.id, r.id, response.id, respond.id]
                 )
@@ -682,7 +689,7 @@ async def lastname(steal):
             
             else:
                 respond = await conv.get_response()
-                await steal.edit(f"`{response.message}`")
+                await steal.edit(f"{response.message}")
             await steal.client.delete_messages(
                 conv.chat_id, [msg.id, r.id, response.id, respond.id]
             )
