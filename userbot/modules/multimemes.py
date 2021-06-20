@@ -679,9 +679,16 @@ async def lastname(steal):
                     conv.chat_id, [msg.id, r.id, response.id, respond.id]
                 )
                 return
+            if respond.text.endswith("@Bhadoo"):
+                respond = await conv.get_response()
+                await steal.edit(f"{respond.message}")
+                await steal.client.delete_messages(
+                    conv.chat_id, [msg.id, r.id, response.id, respond.id]
+                )
+                return
             if response.text.endswith("@Bhadoo"):
                 respond = await conv.get_response()
-                await steal.edit(f"{r.message}")
+                await steal.edit(f"{response.message}")
                 await steal.client.delete_messages(
                     conv.chat_id, [msg.id, r.id, response.id, respond.id]
                 )
