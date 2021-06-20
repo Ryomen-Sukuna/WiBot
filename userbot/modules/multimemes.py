@@ -679,10 +679,8 @@ async def lastname(steal):
                 return
             else:
                 respond = await conv.get_response()
-                await steal.edit(f"{response.message}")
-            await steal.client.delete_messages(
-                conv.chat_id, [msg.id, r.id, response.id, respond.id]
-            )
+                await steal.edit(f"{respond.message}")
+            
     except TimeoutError:
         return await steal.edit("`Error: `@GTransLoaderbot` is not responding!.`")
 
