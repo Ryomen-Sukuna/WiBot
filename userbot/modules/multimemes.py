@@ -277,7 +277,7 @@ async def take_screen_shot(
     return thumb_image_path if os.path.exists(thumb_image_path) else err
 
 
-@register(outgoing=True, pattern=r"^\.dr(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.q(?: |$)(.*)")
 async def quotess(qotli):
     if qotli.fwd_from:
         return
@@ -288,7 +288,7 @@ async def quotess(qotli):
     if not reply_message.text:
         await qotli.edit("```Reply to text message```")
         return
-    chat = "@GTransLoaderbot"
+    chat = "@QuotLyBot"
     reply_message.sender
     if reply_message.sender.bot:
         await qotli.edit("```Reply to actual users message.```")
@@ -298,7 +298,7 @@ async def quotess(qotli):
         async with bot.conversation(chat) as conv:
             try:
                 response = conv.wait_event(
-                    events.NewMessage(incoming=True, from_users=835381165)
+                    events.NewMessage(incoming=True, from_users=1031952739)
                 )
                 msg = await bot.forward_messages(chat, reply_message)
                 response = await response
@@ -324,56 +324,6 @@ async def quotess(qotli):
     except TimeoutError:
         await qotli.edit("`@QuotlyBot doesnt responding`")
         await qotli.client.delete_messages(conv.chat_id, [msg.id])
-
-
-@register(outgoing=True, pattern=r"^\.tload(?: |$)(.*)")
-async def transload(loader):
-    if loader.fwd_from:
-        return
-    if not loader.reply_to_msg_id:
-        await loader.edit("```Reply to any user message.```")
-        return
-    reply_message = await loader.get_reply_message()
-    if not reply_message.text:
-        await loader.edit("```Reply to text message```")
-        return
-    chat = "@GTransloaderbot"
-    reply_message.sender
-    if reply_message.sender.bot:
-        await loader.edit("```Reply to actual users message.```")
-        return
-    try:
-        await loader.edit("`Transloading..`")
-        async with bot.conversation(chat) as conv:
-            try:
-                response = conv.wait_event(
-                    events.NewMessage(incoming=True, from_users=835381165)
-                )
-                msg = await bot.forward_messages(chat, reply_message)
-                response = await response
-                await bot.send_read_acknowledge(conv.chat_id)
-            except YouBlockedUserError:
-                await loader.reply("```Please unblock @GTransloaderbot and try again```")
-                return
-            if response.text.startswith("Hi!"):
-                await loader.edit(
-                    "```Can you kindly disable your forward privacy settings for good?```"
-                )
-            else:
-                downloaded_file_name = await loader.client.download_media(
-                    response.media, TEMP_DOWNLOAD_DIRECTORY
-                )
-                await loader.client.send_file(
-                    loader.chat_id, downloaded_file_name, reply_to=loader.reply_to_msg_id
-                )
-                await loader.delete()
-                await bot.send_read_acknowledge(loader.chat_id)
-                await loader.client.delete_messages(conv.chat_id, [msg.id, response.id])
-                os.remove(downloaded_file_name)
-    except TimeoutError:
-        await loader.edit("`@GTransloaderbot doesnt responding`")
-        await loader.client.delete_messages(conv.chat_id, [msg.id])
-
 
 
 @register(outgoing=True, pattern=r"^\.hz(:? |$)(.*)?")
@@ -607,8 +557,8 @@ async def lastname(steal):
         return
     message = await steal.get_reply_message()
     chat = "@SangMataInfo_bot"
-    user_id = message.sender.id
-    id = f"/search_id {user_id}"
+    reply_message.sender
+    
     if message.sender.bot:
         await steal.edit("`Reply to actual users message.`")
         return
@@ -645,6 +595,56 @@ async def lastname(steal):
             )
     except TimeoutError:
         return await steal.edit("`Error: `@SangMataInfo_bot` is not responding!.`")
+
+
+@register(outgoing=True, pattern=r"^\.tl(?: |$)(.*)")
+async def lastname(steal):
+    if steal.fwd_from:
+        return
+    if not steal.reply_to_msg_id:
+        await steal.edit("`Reply to any user message.`")
+        return
+    message = await steal.get_reply_message()
+    chat = "@GTransLoaderbot"
+    user_id = message.sender.id
+    id = f"/search_id {user_id}"
+    if message.sender.bot:
+        await steal.edit("`Reply to actual users message.`")
+        return
+    await steal.edit("`Sit tight while I steal some data from NASA`")
+    try:
+        async with bot.conversation(chat) as conv:
+            try:
+                msg = await conv.send_message(id)
+                r = await conv.get_response()
+                response = await conv.get_response()
+            except YouBlockedUserError:
+                await steal.reply("`Please unblock @sangmatainfo_bot and try again`")
+                return
+            if r.text.startswith("https"):
+                respond = await conv.get_response()
+                await steal.edit(f"`{r.message}`")
+                await steal.client.delete_messages(
+                    conv.chat_id, [msg.id, r.id, response.id, respond.id]
+                )
+                return
+            if response.text.startswith("Downloading") or r.text.startswith(
+                "Downloading"
+            ):
+                await steal.edit("```Sedang Mengunduh...```")
+                await steal.client.delete_messages(
+                    conv.chat_id, [msg.id, r.id, response.id]
+                )
+                return
+            else:
+                respond = await conv.get_response()
+                await steal.edit(f"`{response.message}`")
+            await steal.client.delete_messages(
+                conv.chat_id, [msg.id, r.id, response.id, respond.id]
+            )
+    except TimeoutError:
+        return await steal.edit("`Error: `@GTransLoaderbot` is not responding!.`")
+
 
 
 @register(outgoing=True, pattern=r"^\.waifu(?: |$)(.*)")
