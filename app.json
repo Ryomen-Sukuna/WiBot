@@ -1,14 +1,15 @@
 {
-  "name": "WeebProject UserBot",
-  "description": "[WeebProject] A modular Telegram userbot running on Python 3.8",
+  "name": "WiBot UserBot",
+  "description": "[WiBot] A modular Telegram userbot running on Python 3.8",
   "keywords": [
     "telegram",
+    "anime",
     "userbot",
     "plugin",
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/BianSepang/WeebProject",
+  "repository": "https://github.com/EruBot/WiBot",
   "website": "https://telegra.ph/How-to-host-a-Telegram-Userbot-11-02",
   "stack": "container",
   "env": {
@@ -44,7 +45,7 @@
     },
     "UPSTREAM_REPO_URL": {
       "description": "In case you maintain a fork, add your repo URL here.",
-      "value": "https://github.com/Scroxy-X/WeebProject",
+      "value": "https://github.com/EruBot/WiBot",
       "required": false
     },
     "COUNTRY": {
