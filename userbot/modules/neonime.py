@@ -36,28 +36,6 @@ async def _neonime(event):
             await event.edit(out, parse_mode="html")
 
 
-@register(outgoing=True, pattern=r"^\.top ?(.*)")
-async def _neonime(event):
-    await event.edit('tunggu bentar...')
-    url = 'https://anitrendz.net/charts/top-anime/'
-    ht_ = requests.get(url).text
-    _bs = bs(ht_, "html.parser")
-    bd_ = _bs.findAll('div', class_='at-main-chart-entries')
-    out = "<b>➲ TOP > Anime Terbaru:</b>\n═════════════════\n"
-    for kntl_ in bd_:
-        _lucu = kntl_.find('div')
-        if not _lucu:
-            _lucu = 'none'
-        else:  # Hasil
-            tt_ = _lucu.get_text()
-            _tt = re.sub(r'\s+detail\s+anime\s+Season.\d+', '', tt_)
-            link = _lucu['entry-title']
-            out += f"➣ {link}'>{_tt}\n"
-            if len(out) > 1000:
-                break
-            await event.edit(out, parse_mode="html")
-
-
 @register(outgoing=True, pattern=r"^\.ks ?(.*)")
 async def _neonime(event):
     await event.edit('tunggu bentar...')
