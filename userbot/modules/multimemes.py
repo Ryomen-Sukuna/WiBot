@@ -647,14 +647,13 @@ async def quotess(qotli):
 
 
 
-@register(outgoing=True, pattern=r"^\.tl(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.tes(?: |$)(.*)")
 async def lastname(steal):
     if steal.fwd_from:
         return
     if not steal.reply_to_msg_id:
         await steal.edit("`Reply to any user message.`")
         return
-    reply_message = await steal.get_reply_message()
     message = await steal.get_reply_message()
     chat = "@prinzeugen_robot"
     user_id = message.sender.id
@@ -662,7 +661,7 @@ async def lastname(steal):
     if message.sender.bot:
         await steal.edit("`Reply to actual users message.`")
         return
-    await steal.edit("`Transloading...`")
+    await steal.edit("`Tunggu...`")
     try:
         async with bot.conversation(chat) as conv:
             try:
@@ -670,19 +669,31 @@ async def lastname(steal):
                 r = await conv.get_response()
                 response = await conv.get_response()
             except YouBlockedUserError:
-                await steal.reply("`Please unblock @GTransLoaderbot and try again`")
-
+                await steal.reply("`Please unblock @sangmatainfo_bot and try again`")
                 return
-            if respond.text.startswith("Give"):
-                await steal.edit(f"{respond.message}")
-
+            if r.text.startswith("Give"):
+                respond = await conv.get_response()
+                await steal.edit(f"`{r.message}`")
+                await steal.client.delete_messages(
+                    conv.chat_id, [msg.id, r.id, response.id, respond.id]
+                )
+                return
+            if response.text.startswith("No records") or r.text.startswith(
+                "No records"
+            ):
+                await steal.edit("```No records found for this user```")
+                await steal.client.delete_messages(
+                    conv.chat_id, [msg.id, r.id, response.id]
+                )
                 return
             else:
                 respond = await conv.get_response()
-                await steal.edit(f"{respond.message}")
-            
+                await steal.edit(f"`{response.message}`")
+            await steal.client.delete_messages(
+                conv.chat_id, [msg.id, r.id, response.id, respond.id]
+            )
     except TimeoutError:
-        return await steal.edit("`Error: `@GTransLoaderbot` is not responding!.`")
+        return await steal.edit("`Error: `@SangMataInfo_bot` is not responding!.`")
 
 
 
