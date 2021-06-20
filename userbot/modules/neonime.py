@@ -28,7 +28,7 @@ async def _neonime(event):
             _lucu = 'none'
         else:  # FKTnK3aKtFvMSUiWLZrTuAp4g93VSjbXcR5zGmqWAijuAuYgR2ACP8WNot2ZyTRVECks1uV5WWW7muWz5SZkY2P8YbWW6AYLUFTsmFU1oW9Y2GP4
             tt_ = _lucu.get_text()
-            _tt = re.sub(r'\s+detail\s+anime\s+Season.\d+', '', tt_)
+            _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
             link = _lucu['href']
             out += f"➣ <a href='{link}'>{_tt}</a>\n"
             if len(out) > 1000:
@@ -50,10 +50,10 @@ async def _neonime(event):
             _lucu = 'none'
         else:  # Hasil
             tt_ = _lucu.get_text()
-            _tt = re.sub(r'\s+Subtitle\s+Indonesia\s+Season.\d+', '', tt_)
+            _tt = re.sub(r'\s+detail\s+anime\s+Season.\d+', '', tt_)
             link = _lucu['href']
             out += f"➣ <a href='https://owibu.com{link}'>{_tt}</a>\n"
-            if len(out) > 1000:
+            if len(in) > 1000:
                 break
             await event.edit(out, parse_mode="html")
 
