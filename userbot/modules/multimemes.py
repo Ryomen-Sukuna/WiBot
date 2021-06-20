@@ -709,7 +709,7 @@ async def kuso(prinz):
             except YouBlockedUserError:
                 await prinz.reply("`Please unblock @prinzeugen_robot and try again`")
                 return
-            if r.text.startswith("Give"):
+            if k.text.startswith("Give"):
                 respond = await conv.get_response()
                 await prinz.edit(f"`{k.message}`")
                 
