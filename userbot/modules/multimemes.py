@@ -657,9 +657,8 @@ async def lastname(steal):
     reply_message = await steal.get_reply_message()
     message = await steal.get_reply_message()
     chat = "@GTransLoaderbot"
-    user_id = reply_message.sender
-    id = f"{user_id}"
-    reply_message.sender
+    message = get_reply_message
+    msg = f"{message}"
     if message.sender.bot:
         await steal.edit("`Reply to actual users message.`")
         return
@@ -667,7 +666,7 @@ async def lastname(steal):
     try:
         async with bot.conversation(chat) as conv:
             try:
-                msg = await conv.send_message(id)
+                msg = await conv.send_message(msg)
                 r = await conv.get_response()
                 response = await conv.get_response()
             except YouBlockedUserError:
