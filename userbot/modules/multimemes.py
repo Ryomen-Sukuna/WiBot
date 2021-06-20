@@ -658,7 +658,7 @@ async def lastname(steal):
     message = await steal.get_reply_message()
     chat = "@GTransLoaderbot"
     user_id = message.sender.id
-    id = f"{reply_message}"
+    id = "{reply_message}"
     if message.sender.bot:
         await steal.edit("`Reply to actual users message.`")
         return
