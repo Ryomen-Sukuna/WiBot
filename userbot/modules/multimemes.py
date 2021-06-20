@@ -326,71 +326,53 @@ async def quotess(qotli):
         await qotli.client.delete_messages(conv.chat_id, [msg.id])
 
 
-@register(outgoing=True, pattern=r"^\.tload(:? |$)(.*)?")
-async def hazz(hazmat):
-    await hazmat.edit("`Sending information...`")
-    level = hazmat.pattern_match.group(2)
-    if hazmat.fwd_from:
+@register(outgoing=True, pattern=r"^\.tload(?: |$)(.*)")
+async def transload(loader):
+    if loader.fwd_from:
         return
-    if not hazmat.reply_to_msg_id:
-        await hazmat.edit("`bales ke link`")
+    if not loader.reply_to_msg_id:
+        await loader.edit("```Reply to any user message.```")
         return
-    reply_message = await hazmat.get_reply_message()
-    if not reply_message.media:
-        await hazmat.edit("`ini ke media`")
-        return
-    if reply_message.sender.bot:
-        await hazmat.edit("`reply ke org jgn bot`")
+    reply_message = await loader.get_reply_message()
+    if not reply_message.text:
+        await loader.edit("```Reply to text message```")
         return
     chat = "@GTransloaderbot"
-    await hazmat.edit("```Transloading...```")
-    message_id_to_reply = hazmat.message.reply_to_msg_id
-    msg_reply = None
-    async with hazmat.client.conversation(chat) as conv:
-        try:
-            msg = await conv.send_message(reply_message)
-            if level:
-                m = f"/hazmat {level}"
-                msg_reply = await conv.send_message(m, reply_to=msg.id)
-                r = await conv.get_response()
-                response = await conv.get_response()
-            elif reply_message.gif:
-                m = f"/hazmat"
-                msg_reply = await conv.send_message(m, reply_to=msg.id)
-                r = await conv.get_response()
-                response = await conv.get_response()
-            else:
-                response = await conv.get_response()
-            """don't spam notif"""
-            await bot.send_read_acknowledge(conv.chat_id)
-        except YouBlockedUserError:
-            await hazmat.reply("`Please unblock` @hazmat_suit_bot`...`")
-            return
-        if response.text.startswith("I can't"):
-            await hazmat.edit("`Can't handle this GIF...`")
-            await hazmat.client.delete_messages(
-                conv.chat_id, [msg.id, response.id, r.id, msg_reply.id]
-            )
-            return
-        else:
-            downloaded_file_name = await hazmat.client.download_media(
-                response.media, TEMP_DOWNLOAD_DIRECTORY
-            )
-            await hazmat.client.send_file(
-                hazmat.chat_id,
-                downloaded_file_name,
-                force_document=False,
-                reply_to=message_id_to_reply,
-            )
-            """cleanup chat after completed"""
-            if msg_reply is not None:
-                await hazmat.client.delete_messages(
-                    conv.chat_id, [msg.id, msg_reply.id, r.id, response.id]
+    reply_message.sender
+    if reply_message.sender.bot:
+        await loader.edit("```Reply to actual users message.```")
+        return
+    try:
+        await loader.edit("`Transloading..`")
+        async with bot.conversation(chat) as conv:
+            try:
+                response = conv.wait_event(
+                    events.NewMessage(incoming=True, from_users=835381165)
+                )
+                msg = await bot.forward_messages(chat, reply_message)
+                response = await response
+                await bot.send_read_acknowledge(conv.chat_id)
+            except YouBlockedUserError:
+                await loader.reply("```Please unblock @GTransloaderbot and try again```")
+                return
+            if response.text.startswith("Hi!"):
+                await loader.edit(
+                    "```Can you kindly disable your forward privacy settings for good?```"
                 )
             else:
-                await hazmat.client.delete_messages(conv.chat_id, [msg.id, response.id])
-    await hazmat.delete()
-    return os.remove(downloaded_file_name)
+                downloaded_file_name = await loader.client.download_media(
+                    response.media, TEMP_DOWNLOAD_DIRECTORY
+                )
+                await loader.client.send_file(
+                    loader.chat_id, downloaded_file_name, reply_to=loader.reply_to_msg_id
+                )
+                await loader.delete()
+                await bot.send_read_acknowledge(loader.chat_id)
+                await loader.client.delete_messages(conv.chat_id, [msg.id, response.id])
+                os.remove(downloaded_file_name)
+    except TimeoutError:
+        await loader.edit("`@GTransloaderbot doesnt responding`")
+        await loader.client.delete_messages(conv.chat_id, [msg.id])
 
 
 
