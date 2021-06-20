@@ -704,28 +704,22 @@ async def kuso(prinz):
         async with bot.conversation(chat) as conv:
             try:
                 msg = await conv.send_message(id)
-                k = await conv.get_response()
+                
                 response = await conv.get_response()
             except YouBlockedUserError:
                 await prinz.reply("`Please unblock @prinzeugen_robot and try again`")
                 return
-            if k.text.startswith("Give"):
-                respond = await conv.get_response()
-                await prinz.edit(f"`{k.message}`")
-                
-                return
-            if response.text.startswith("PONG!!") or r.text.startswith(
-                "PONG!!"
-            ):
-                await prinz.edit("```No records found for this user```")
-                
+            if response.text.startswith("nit!"):
+                await prinz.edit(
+                    "```not!```"
+                )
                 return
             else:
                 respond = await conv.get_response()
                 await prinz.edit(f"`{response.message}`")
             
     except TimeoutError:
-        return await prinz.edit("`Error: `@SangMataInfo_bot` is not responding!.`")
+        return await prinz.edit("`Error: `@prinzeugen_robot` is not responding!.`")
 
 
 
