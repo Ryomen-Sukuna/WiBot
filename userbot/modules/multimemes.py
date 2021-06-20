@@ -655,7 +655,7 @@ async def lastname(steal):
         await steal.edit("`Reply to any user message.`")
         return
     reply_message = await steal.get_reply_message()
-    chat = "@prinzeugen_robot"
+    chat = "@gtransloaderbot"
     user_id = message.sender.id
     id = f"{reply_message.text}"
     if message.sender.bot:
@@ -671,7 +671,7 @@ async def lastname(steal):
             except YouBlockedUserError:
                 await steal.reply("`Please unblock @sangmatainfo_bot and try again`")
                 return
-            if r.text.startswith("Give"):
+            if r.text.startswith("https://"):
                 respond = await conv.get_response()
                 await steal.edit(f"`{r.message}`")
                 await steal.client.delete_messages(
