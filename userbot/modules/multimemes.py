@@ -557,8 +557,8 @@ async def lastname(steal):
         return
     message = await steal.get_reply_message()
     chat = "@SangMataInfo_bot"
-    reply_message.sender
-    
+    user_id = message.sender.id
+    id = f"/search_id {user_id}"
     if message.sender.bot:
         await steal.edit("`Reply to actual users message.`")
         return
@@ -597,6 +597,7 @@ async def lastname(steal):
         return await steal.edit("`Error: `@SangMataInfo_bot` is not responding!.`")
 
 
+
 @register(outgoing=True, pattern=r"^\.tl(?: |$)(.*)")
 async def lastname(steal):
     if steal.fwd_from:
@@ -606,12 +607,12 @@ async def lastname(steal):
         return
     message = await steal.get_reply_message()
     chat = "@GTransLoaderbot"
-    user_id = message.sender.id
-    id = f"/search_id {user_id}"
+    reply_message.sender
+
     if message.sender.bot:
         await steal.edit("`Reply to actual users message.`")
         return
-    await steal.edit("`Sit tight while I steal some data from NASA`")
+    await steal.edit("`Transloading...`")
     try:
         async with bot.conversation(chat) as conv:
             try:
@@ -619,7 +620,7 @@ async def lastname(steal):
                 r = await conv.get_response()
                 response = await conv.get_response()
             except YouBlockedUserError:
-                await steal.reply("`Please unblock @sangmatainfo_bot and try again`")
+                await steal.reply("`Please unblock @GTransLoaderbot and try again`")
                 return
             if r.text.startswith("https"):
                 respond = await conv.get_response()
