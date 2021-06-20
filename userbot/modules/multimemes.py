@@ -654,7 +654,7 @@ async def lastname(steal):
     if not steal.reply_to_msg_id:
         await steal.edit("`Reply to any user message.`")
         return
-    message = await steal.get_reply_message()
+    reply_message = await steal.get_reply_message()
     chat = "@prinzeugen_robot"
     user_id = message.sender.id
     id = f"{reply_message.text}"
@@ -678,8 +678,8 @@ async def lastname(steal):
                     conv.chat_id, [msg.id, r.id, response.id, respond.id]
                 )
                 return
-            if response.text.startswith("No records") or r.text.startswith(
-                "No records"
+            if response.text.startswith("PONG!!") or r.text.startswith(
+                "PONG!!"
             ):
                 await steal.edit("```No records found for this user```")
                 await steal.client.delete_messages(
