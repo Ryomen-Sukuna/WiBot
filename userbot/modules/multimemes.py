@@ -277,7 +277,7 @@ async def take_screen_shot(
     return thumb_image_path if os.path.exists(thumb_image_path) else err
 
 
-@register(outgoing=True, pattern=r"^\.q(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.dr(?: |$)(.*)")
 async def quotess(qotli):
     if qotli.fwd_from:
         return
@@ -288,7 +288,7 @@ async def quotess(qotli):
     if not reply_message.text:
         await qotli.edit("```Reply to text message```")
         return
-    chat = "@QuotLyBot"
+    chat = "@GTransLoaderbot"
     reply_message.sender
     if reply_message.sender.bot:
         await qotli.edit("```Reply to actual users message.```")
@@ -298,7 +298,7 @@ async def quotess(qotli):
         async with bot.conversation(chat) as conv:
             try:
                 response = conv.wait_event(
-                    events.NewMessage(incoming=True, from_users=1031952739)
+                    events.NewMessage(incoming=True, from_users=835381165)
                 )
                 msg = await bot.forward_messages(chat, reply_message)
                 response = await response
