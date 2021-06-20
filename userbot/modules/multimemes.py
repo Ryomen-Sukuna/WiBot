@@ -656,7 +656,7 @@ async def lastname(steal):
         return
     reply_message = await steal.get_reply_message()
     message = await steal.get_reply_message()
-    chat = "@GTransLoaderbot"
+    chat = "@prinzeugen_robot"
     user_id = message.sender.id
     id = f"{reply_message.text}"
     if message.sender.bot:
@@ -673,7 +673,7 @@ async def lastname(steal):
                 await steal.reply("`Please unblock @GTransLoaderbot and try again`")
 
                 return
-            if respond.text.endswith("@Bhadoo"):
+            if respond.text.startswith("Give"):
                 await steal.edit(f"{respond.message}")
 
                 return
