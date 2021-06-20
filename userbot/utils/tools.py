@@ -84,8 +84,8 @@ async def run_cmd(cmd: List) -> (bytes, bytes):
 
 def post_to_telegraph(title, html_format_content):
     post_client = TelegraphPoster(use_api=True)
-    auth_name = "BotGabut"
-    auth_url = "https://github.com/Scroxy-X/BotGabut"
+    auth_name = "WiBot"
+    auth_url = "https://github.com/EruBot/WiBot"
     post_client.create_api_token(auth_name)
     post_page = post_client.post(
         title=title,
