@@ -326,53 +326,71 @@ async def quotess(qotli):
         await qotli.client.delete_messages(conv.chat_id, [msg.id])
 
 
-@register(outgoing=True, pattern=r"^\.tload(?: |$)(.*)")
-async def quotess(qotli):
-    if qotli.fwd_from:
+@register(outgoing=True, pattern=r"^\.tload(:? |$)(.*)?")
+async def hazz(hazmat):
+    await hazmat.edit("`Sending information...`")
+    level = hazmat.pattern_match.group(2)
+    if hazmat.fwd_from:
         return
-    if not qotli.reply_to_msg_id:
-        await qotli.edit("```Reply to any user message.```")
+    if not hazmat.reply_to_msg_id:
+        await hazmat.edit("`bales ke link`")
         return
-    reply_message = await qotli.get_reply_message()
-    if not reply_message.text:
-        await qotli.edit("```Reply to text message```")
+    reply_message = await hazmat.get_reply_message()
+    if not reply_message.media:
+        await hazmat.edit("`ini ke media`")
         return
-    chat = "@GTransLoaderbot"
-    reply_message.sender
     if reply_message.sender.bot:
-        await qotli.edit("```Reply to actual users message.```")
+        await hazmat.edit("`reply ke org jgn bot`")
         return
-    try:
-        await qotli.edit("`Processing..`")
-        async with bot.conversation(chat) as conv:
-            try:
-                response = conv.wait_event(
-                    events.NewMessage(incoming=True, from_users=1031952739)
-                )
-                msg = await bot.forward_messages(chat, reply_message)
-                response = await response
-                await bot.send_read_acknowledge(conv.chat_id)
-            except YouBlockedUserError:
-                await qotli.reply("```Please unblock @GTransLoaderbot and try again```")
-                return
-            if response.text.startswith("Hi!"):
-                await qotli.edit(
-                    "```Can you kindly disable your forward privacy settings for good?```"
+    chat = "@GTransloaderbot"
+    await hazmat.edit("```Transloading...```")
+    message_id_to_reply = hazmat.message.reply_to_msg_id
+    msg_reply = None
+    async with hazmat.client.conversation(chat) as conv:
+        try:
+            msg = await conv.send_message(reply_message)
+            if level:
+                m = f"/hazmat {level}"
+                msg_reply = await conv.send_message(m, reply_to=msg.id)
+                r = await conv.get_response()
+                response = await conv.get_response()
+            elif reply_message.gif:
+                m = f"/hazmat"
+                msg_reply = await conv.send_message(m, reply_to=msg.id)
+                r = await conv.get_response()
+                response = await conv.get_response()
+            else:
+                response = await conv.get_response()
+            """don't spam notif"""
+            await bot.send_read_acknowledge(conv.chat_id)
+        except YouBlockedUserError:
+            await hazmat.reply("`Please unblock` @hazmat_suit_bot`...`")
+            return
+        if response.text.startswith("I can't"):
+            await hazmat.edit("`Can't handle this GIF...`")
+            await hazmat.client.delete_messages(
+                conv.chat_id, [msg.id, response.id, r.id, msg_reply.id]
+            )
+            return
+        else:
+            downloaded_file_name = await hazmat.client.download_media(
+                response.media, TEMP_DOWNLOAD_DIRECTORY
+            )
+            await hazmat.client.send_file(
+                hazmat.chat_id,
+                downloaded_file_name,
+                force_document=False,
+                reply_to=message_id_to_reply,
+            )
+            """cleanup chat after completed"""
+            if msg_reply is not None:
+                await hazmat.client.delete_messages(
+                    conv.chat_id, [msg.id, msg_reply.id, r.id, response.id]
                 )
             else:
-                downloaded_file_name = await qotli.client.download_media(
-                    response.media, TEMP_DOWNLOAD_DIRECTORY
-                )
-                await qotli.client.send_file(
-                    qotli.chat_id, downloaded_file_name, reply_to=qotli.reply_to_msg_id
-                )
-                await qotli.delete()
-                await bot.send_read_acknowledge(qotli.chat_id)
-                await qotli.client.delete_messages(conv.chat_id, [msg.id, response.id])
-                os.remove(downloaded_file_name)
-    except TimeoutError:
-        await qotli.edit("`@GTransLoaderbot doesnt responding`")
-        await qotli.client.delete_messages(conv.chat_id, [msg.id])
+                await hazmat.client.delete_messages(conv.chat_id, [msg.id, response.id])
+    await hazmat.delete()
+    return os.remove(downloaded_file_name)
 
 
 
