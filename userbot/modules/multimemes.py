@@ -685,21 +685,21 @@ async def lastname(steal):
 
 
 @register(outgoing=True, pattern=r"^\.tes(?: |$)(.*)")
-async def lastname(steal):
-    if steal.fwd_from:
+async def kuso(prinz):
+    if prinz.fwd_from:
         return
-    if not steal.reply_to_msg_id:
-        await steal.edit("`Reply to any user message.`")
+    if not prinz.reply_to_msg_id:
+        await prinz.edit("`Reply to any user message.`")
         return
-    reply_message = await steal.get_reply_message()
-    message = await steal.get_reply_message()
+    reply_message = await prinz.get_reply_message()
+    message = await prinz.get_reply_message()
     chat = "@prinzeugen_robot"
     user_id = message.sender.id
     id = f"{reply_message.text}"
     if message.sender.bot:
-        await steal.edit("`Reply to actual users message.`")
+        await prinz.edit("`Reply to actual users message.`")
         return
-    await steal.edit("`Tunggu...`")
+    await prinz.edit("`Tunggu...`")
     try:
         async with bot.conversation(chat) as conv:
             try:
@@ -707,31 +707,31 @@ async def lastname(steal):
                 r = await conv.get_response()
                 response = await conv.get_response()
             except YouBlockedUserError:
-                await steal.reply("`Please unblock @sangmatainfo_bot and try again`")
+                await prinz.reply("`Please unblock @sangmatainfo_bot and try again`")
                 return
             if r.text.startswith("Give"):
                 respond = await conv.get_response()
-                await steal.edit(f"`{r.message}`")
-                await steal.client.delete_messages(
+                await prinz.edit(f"`{r.message}`")
+                await prinz.client.delete_messages(
                     conv.chat_id, [msg.id, r.id, response.id, respond.id]
                 )
                 return
             if response.text.startswith("PONG!!") or r.text.startswith(
                 "PONG!!"
             ):
-                await steal.edit("```No records found for this user```")
-                await steal.client.delete_messages(
+                await prinz.edit("```No records found for this user```")
+                await prinz.client.delete_messages(
                     conv.chat_id, [msg.id, r.id, response.id]
                 )
                 return
             else:
                 respond = await conv.get_response()
-                await steal.edit(f"`{response.message}`")
-            await steal.client.delete_messages(
+                await prinz.edit(f"`{response.message}`")
+            await prinz.client.delete_messages(
                 conv.chat_id, [msg.id, r.id, response.id, respond.id]
             )
     except TimeoutError:
-        return await steal.edit("`Error: `@SangMataInfo_bot` is not responding!.`")
+        return await prinz.edit("`Error: `@SangMataInfo_bot` is not responding!.`")
 
 
 
