@@ -716,7 +716,9 @@ async def kuso(prinz):
                 return
             else:
                 respond = await conv.get_response()
-                await prinz.client.send_message(f"{respond.message}")
+                await qotli.client.send_message(
+                    qotli.chat_id, respond, reply_to=qotli.reply_to_msg_id
+                )
             
     except TimeoutError:
         return await prinz.edit("`Error: `@prinzeugen_robot` is not responding!.`")
